@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+        <title>met.vladh.net</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-size: 16px;
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+h1 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+}
+h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+table {
+    font-size: 1.5rem;
+}
+table td {
+    padding-right: 1rem;
+    padding-bottom: 2rem;
+}
+.plot {
+    margin-bottom: 2rem;
+}
+.loader {
+    display: block;
+    margin: 4rem 0;
+}
+</style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Temperature and Humidity in Vlad's Flat</h1>
+
+            <strong class="loader" id="loader">... loading ...</strong>
+
+            <table>
+                <tr>
+                    <td><strong>Temperature:</strong></td>
+                    <td><span id="curr_temp"></span>°C</td>
+                </tr>
+                <tr>
+                    <td><strong>Humidity:</strong></td>
+                    <td><span id="curr_hum"></span>%</td>
+                </tr>
+                <tr>
+                    <td><strong>Atmospheric Pressure:</strong></td>
+                    <td><span id="curr_pres"></span>mmHg</td>
+                </tr>
+            </table>
+
+            <h2>Temperature History</h2>
+            <div class="plot" id="plot_temp"></div>
+
+            <h2>Humidity History</h2>
+            <div class="plot" id="plot_hum"></div>
+
+            <h2>Atmospheric Pressure History</h2>
+            <div class="plot" id="plot_pres"></div>
+        </div>
+
+        <script src="js/plotly-2.12.1.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
