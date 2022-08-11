@@ -6,37 +6,55 @@
 * {
     box-sizing: border-box;
 }
+html {
+    font-size: 20px;
+    font-family: sans-serif;
+}
 body {
     margin: 0;
-    font-size: 16px;
 }
 .container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
 }
 h1 {
     margin: 0;
-    margin-bottom: 2rem;
-    font-size: 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
 }
 h2 {
     margin: 0;
-    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
 }
-table {
-    font-size: 1.5rem;
+dl {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    margin-bottom: 1.5rem;
 }
-table td {
-    padding-right: 1rem;
-    padding-bottom: 2rem;
+dl div {
+    flex: 1;
+}
+dd, dt {
+    padding: 0.5rem 0;
+}
+dd {
+    margin: 0;
+}
+dt {
+    font-size: 1.5rem;
 }
 .plot {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 .loader {
     display: block;
-    margin: 4rem 0;
+}
+.charts {
+    display: none;
 }
 </style>
     </head>
@@ -44,34 +62,38 @@ table td {
         <div class="container">
             <h1>Temperature and Humidity in Vlad's Flat</h1>
 
-            <strong class="loader" id="loader">... loading ...</strong>
+            <noscript>Javascript is required, sorry!</noscript>
 
-            <table>
-                <tr>
-                    <td><strong>Temperature:</strong></td>
-                    <td><span id="curr_temp"></span>°C</td>
-                </tr>
-                <tr>
-                    <td><strong>Humidity:</strong></td>
-                    <td><span id="curr_hum"></span>%</td>
-                </tr>
-                <tr>
-                    <td><strong>Atmospheric Pressure:</strong></td>
-                    <td><span id="curr_pres"></span>mmHg</td>
-                </tr>
-            </table>
+            <p class="loader" id="loader">... loading data ...</p>
 
-            <h2>Temperature History</h2>
-            <div class="plot" id="plot_temp"></div>
+            <div class="charts" id="charts">
+                <dl>
+                    <div>
+                        <dd>temperature</dd>
+                        <dt><span id="curr_temp"></span>°C</dt>
+                    </div>
+                    <div>
+                        <dd>humidity</dd>
+                        <dt><span id="curr_hum"></span>%</dt>
+                    </div>
+                    <div>
+                        <dd>atmospheric pressure</dd>
+                        <dt><span id="curr_pres"></span>mmHg</dt>
+                    </div>
+                </dl>
 
-            <h2>Humidity History</h2>
-            <div class="plot" id="plot_hum"></div>
+                <h2>Temperature history</h2>
+                <div class="plot" id="plot_temp"></div>
 
-            <h2>Atmospheric Pressure History</h2>
-            <div class="plot" id="plot_pres"></div>
+                <h2>Humidity history</h2>
+                <div class="plot" id="plot_hum"></div>
+
+                <h2>Atmospheric pressure history</h2>
+                <div class="plot" id="plot_pres"></div>
+            </div>
         </div>
 
-        <script src="js/plotly-2.12.1.min.js"></script>
+        <script src="js/plotly-basic.min.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

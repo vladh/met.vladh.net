@@ -26,13 +26,24 @@ async function main() {
         .then((response) => response.text())
         .then((text) => parse_data(text));
 
+    document.getElementById('charts').style.display = 'block';
+
     ['temp', 'pres', 'hum'].forEach((field) => {
         const plot_params = [{
             x: data.date,
             y: data[field],
             type: 'scatter',
         }];
-        Plotly.newPlot(`plot_${field}`, plot_params);
+        const layout = {
+            margin: {
+                t: 0,
+                r: 0,
+                b: 30,
+                l: 20,
+            },
+            height: 300,
+        };
+        Plotly.newPlot(`plot_${field}`, plot_params, layout);
 
         const latest_val = (+data[field].at(-1)).toFixed(2);
         document.getElementById(`curr_${field}`).innerHTML = latest_val;
