@@ -51,7 +51,7 @@ dt {
     margin-bottom: 1.5rem;
 }
 .loader {
-    display: block;
+    display: none;
 }
 .charts {
     display: none;
@@ -93,6 +93,9 @@ dt {
             </div>
         </div>
 
+        <script>
+            document.getElementById('loader').style.display = 'block';
+        </script>
         <script src="js/plotly-basic.min.js"></script>
         <script src="js/main.js"></script>
     </body>
