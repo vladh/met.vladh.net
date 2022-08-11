@@ -26,8 +26,6 @@ async function main() {
         .then((response) => response.text())
         .then((text) => parse_data(text));
 
-    document.getElementById('charts').style.display = 'block';
-
     ['temp', 'pres', 'hum'].forEach((field) => {
         const plot_params = [{
             x: data.date,
@@ -43,13 +41,12 @@ async function main() {
             },
             height: 300,
         };
+        document.getElementById(`plot_${field}`).innerHTML = '';
         Plotly.newPlot(`plot_${field}`, plot_params, layout);
 
         const latest_val = (+data[field].at(-1)).toFixed(2);
         document.getElementById(`curr_${field}`).innerHTML = latest_val;
     });
-
-    document.getElementById('loader').style.display = 'none';
 }
 
 

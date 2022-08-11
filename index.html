@@ -50,12 +50,6 @@ dt {
 .plot {
     margin-bottom: 1.5rem;
 }
-.loader {
-    display: none;
-}
-.charts {
-    display: none;
-}
 </style>
     </head>
     <body>
@@ -64,38 +58,31 @@ dt {
 
             <noscript>Javascript is required, sorry!</noscript>
 
-            <p class="loader" id="loader">... loading data ...</p>
+            <dl>
+                <div>
+                    <dd>temperature</dd>
+                    <dt><span id="curr_temp">...</span>°C</dt>
+                </div>
+                <div>
+                    <dd>humidity</dd>
+                    <dt><span id="curr_hum">...</span>%</dt>
+                </div>
+                <div>
+                    <dd>atmospheric pressure</dd>
+                    <dt><span id="curr_pres">...</span>mmHg</dt>
+                </div>
+            </dl>
 
-            <div class="charts" id="charts">
-                <dl>
-                    <div>
-                        <dd>temperature</dd>
-                        <dt><span id="curr_temp"></span>°C</dt>
-                    </div>
-                    <div>
-                        <dd>humidity</dd>
-                        <dt><span id="curr_hum"></span>%</dt>
-                    </div>
-                    <div>
-                        <dd>atmospheric pressure</dd>
-                        <dt><span id="curr_pres"></span>mmHg</dt>
-                    </div>
-                </dl>
+            <h2>Temperature history</h2>
+            <div class="plot" id="plot_temp">(loading)</div>
 
-                <h2>Temperature history</h2>
-                <div class="plot" id="plot_temp"></div>
+            <h2>Humidity history</h2>
+            <div class="plot" id="plot_hum">(loading)</div>
 
-                <h2>Humidity history</h2>
-                <div class="plot" id="plot_hum"></div>
-
-                <h2>Atmospheric pressure history</h2>
-                <div class="plot" id="plot_pres"></div>
-            </div>
+            <h2>Atmospheric pressure history</h2>
+            <div class="plot" id="plot_pres">(loading)</div>
         </div>
 
-        <script>
-            document.getElementById('loader').style.display = 'block';
-        </script>
         <script src="js/plotly-basic.min.js"></script>
         <script src="js/main.js"></script>
     </body>
