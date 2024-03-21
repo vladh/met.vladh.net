@@ -55,7 +55,6 @@ async function main() {
             },
             height: 300,
         };
-        document.getElementById(`plot_${field}`).innerHTML = '';
         Plotly.newPlot(`plot_${field}`, plot_params, layout);
 
         document.getElementById(`curr_${field}_a`).innerHTML =
