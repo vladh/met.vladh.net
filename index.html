@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>Temperature and Humidity in Vlad's Flat</title>
 <style>
 * {
@@ -9,6 +10,7 @@
 html {
     font-size: 20px;
     font-family: sans-serif;
+    background: #f6f7fa;
 }
 body {
     margin: 0;
@@ -26,14 +28,13 @@ h1 {
 }
 h2 {
     margin: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     font-size: 1.2rem;
 }
 dl {
     display: flex;
     flex-wrap: wrap;
     margin: 0;
-    margin-bottom: 1.5rem;
 }
 dl div {
     flex: 1;
@@ -49,6 +50,37 @@ dt {
 }
 .plot {
     margin-bottom: 1.5rem;
+    background: white;
+}
+.dummy_plot {
+    min-height: 300px;
+    padding: 1rem;
+    background: white;
+}
+.room {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: white;
+}
+.room .room__title {
+    margin-top: -2rem;
+}
+.room .room__title h2 {
+    display: inline-block;
+    padding: 0.5rem;
+    background: #0055ee;
+    color: white;
+}
+.main-loader {
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -20%);
+    padding: 3rem;
+    background: #0055ee;
+    color: white;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25);
 }
 </style>
     </head>
@@ -58,29 +90,62 @@ dt {
 
             <noscript>Javascript is required, sorry!</noscript>
 
-            <dl>
-                <div>
-                    <dd>temperature</dd>
-                    <dt><span id="curr_temp">...</span>°C</dt>
+            <div class="main-loader loader">
+                Loading!
+                This takes a few seconds, sorry.
+            </div>
+
+            <div class="room">
+                <div class="room__title">
+                    <h2>Living room</h2>
                 </div>
-                <div>
-                    <dd>humidity</dd>
-                    <dt><span id="curr_hum">...</span>%</dt>
+                <dl>
+                    <div>
+                        <dd>temperature</dd>
+                        <dt><span id="curr_temp_a">...</span>°C</dt>
+                    </div>
+                    <div>
+                        <dd>humidity</dd>
+                        <dt><span id="curr_hum_a">...</span>%</dt>
+                    </div>
+                    <div>
+                        <dd>atmospheric pressure</dd>
+                        <dt><span id="curr_pres_a">...</span>mmHg</dt>
+                    </div>
+                </dl>
+            </div>
+
+            <div class="room">
+                <div class="room__title">
+                    <h2>Study</h2>
                 </div>
-                <div>
-                    <dd>atmospheric pressure</dd>
-                    <dt><span id="curr_pres">...</span>mmHg</dt>
-                </div>
-            </dl>
+                <dl>
+                    <div>
+                        <dd>temperature</dd>
+                        <dt><span id="curr_temp_b">...</span>°C</dt>
+                    </div>
+                    <div>
+                        <dd>humidity</dd>
+                        <dt><span id="curr_hum_b">...</span>%</dt>
+                    </div>
+                    <div>
+                        <dd>atmospheric pressure</dd>
+                        <dt><span id="curr_pres_b">...</span>mmHg</dt>
+                    </div>
+                </dl>
+            </div>
 
             <h2>Temperature history</h2>
-            <div class="plot" id="plot_temp">(loading)</div>
+            <div class="plot" id="plot_temp"></div>
+            <div class="dummy_plot loader"></div>
 
             <h2>Humidity history</h2>
-            <div class="plot" id="plot_hum">(loading)</div>
+            <div class="plot" id="plot_hum"></div>
+            <div class="dummy_plot loader"></div>
 
             <h2>Atmospheric pressure history</h2>
-            <div class="plot" id="plot_pres">(loading)</div>
+            <div class="plot" id="plot_pres"></div>
+            <div class="dummy_plot loader"></div>
         </div>
 
         <script src="js/plotly-basic.min.js"></script>
